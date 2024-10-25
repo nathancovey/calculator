@@ -95,3 +95,13 @@ body {
   .attribution a:hover {
     color: #7fb5ff;
   }
+
+  .party-button {
+    position: relative;
+    overflow: hidden;
+    background-color: #333 !important;
+  }
+  
+  .party-button:hover {
+    background-color: #444 !important;
+  }
