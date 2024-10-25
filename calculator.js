@@ -1,10 +1,9 @@
- // Make sure audio context is created on user interaction
- let audioCtx = null;
+let audioCtx = null;
 
- function playPartySound() {
-   if (!audioCtx) {
-     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-   }
+function playPartySound() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
    
    const oscillator = audioCtx.createOscillator();
    const gainNode = audioCtx.createGain();
@@ -13,8 +12,8 @@
    gainNode.connect(audioCtx.destination);
    
    oscillator.type = 'sine';
-   oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // A4 note
-   oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1); // Slide to A5
+   oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+   oscillator.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.1);
    
    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
@@ -34,10 +33,9 @@
      document.querySelectorAll('button').forEach(button => {
        if (button.classList.contains('party-button')) {
          button.addEventListener('click', () => {
-           // Play sound
+
            playPartySound();
            
-           // Launch confetti
            confetti({
              particleCount: 100,
              spread: 70,
@@ -51,7 +49,6 @@
      });
    }
 
-   // Rest of your calculator code remains the same
    handleButton(value) {
      if (value.match(/[0-9.]/)) {
        this.handleNumber(value);
@@ -143,5 +140,4 @@
    }
  }
 
- // Initialize calculator
  new Calculator();
